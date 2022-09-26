@@ -25,6 +25,7 @@ function App(){
 
             <EmployeesList 
                 data = {data}
+                onDelete = {id => console.log(id)}
             />
             <EmployeesAddForm />
         </div>

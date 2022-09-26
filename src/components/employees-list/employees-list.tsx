@@ -6,10 +6,12 @@ const EmployeesList = (props:any) => {
     const elements  = props.data.map(
         (item: { name: any; salary: any; increase: any; id: any;}) =>{
             const {id, ...itemProps} = item;
+
             return (
                 <EmployeesListItem 
                         key= {id} 
                         {...itemProps}
+                        onDelete = {()=>props.onDelete(id)}
                         />
             )
     }) 
