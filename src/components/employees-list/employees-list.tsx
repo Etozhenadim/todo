@@ -2,11 +2,16 @@ import EmployeesListItem from "../employees-list-item/employees-list-item";
 
 import './employees-list.css';
 
-const EmployeesList = (data:any) => {
-    const elements  = data.map((item: { name: any; salary: any; }) =>{
-        return (
-            <EmployeesListItem name={item.name} salary ={item.salary}/>
-        )
+const EmployeesList = (props:any) => {
+    const elements  = props.data.map(
+        (item: { name: any; salary: any; increase: any; id: any;}) =>{
+            const {id, ...itemProps} = item;
+            return (
+                <EmployeesListItem 
+                        key= {id} 
+                        {...itemProps}
+                        />
+            )
     }) 
 
     return (
