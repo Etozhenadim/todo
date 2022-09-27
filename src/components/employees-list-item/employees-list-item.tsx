@@ -9,14 +9,17 @@ const EmployeesListItem = (props:any) =>{
         classNames+= ' increase';
     }
 
+
+
     return (
         <li className={classNames}>
-            <span className="list-group-item-label">{props.name}</span>
+            <span className="list-group-item-label" onClick = {props.onToggleRise}>{props.name}</span>
             <input type="text" className="list-group-item-input" defaultValue={props.salary + ' $'}/>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                         className="btn-cookie btn-sm "
-                        onClick = {() => setIncrease(increase => !increase)}
+                        // onClick = {() => setIncrease(increase => !increase)}
+                        onClick = {props.onToggleIncrease}
                         >
                     <i className="fas fa-cookie"></i>
                 </button>

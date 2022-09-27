@@ -13,7 +13,32 @@ function App(){
         {name: 'Vasya', salary: 500, increase: true, id: 2},
         {name: 'Ilya', salary: 1000, increase: false, id: 3},
     ])
+    let maxId = 4;
     
+    const onDelete = (id) => {
+        setData(prevState => prevState.filter(item => item.id !==id))
+        
+    }
+    const onAdd = (name, salary) => {
+        const newItem = {
+            name, 
+            salary,
+            increase: false,
+            id: maxId++
+        }
+        const newArr = [...data, newItem];
+        setData(newArr);
+            
+    }
+    const onToggleIncrease = (id) =>{
+        console.log( `Increase this ${id}`)
+    }
+
+    const onToggleRise = (id) =>{
+        console.log( `Rise this ${id}`)
+    }
+
+
     return (
         <div className="app">
             <AppInfo />
@@ -25,9 +50,13 @@ function App(){
 
             <EmployeesList 
                 data = {data}
-                onDelete = {id => console.log(id)}
+                onDelete = {onDelete}
+                onToggleIncrease = {onToggleIncrease}
+                onToggleRise = {onToggleRise}
             />
-            <EmployeesAddForm />
+            <EmployeesAddForm 
+                onAdd = {onAdd}
+            />
         </div>
     )
 }
