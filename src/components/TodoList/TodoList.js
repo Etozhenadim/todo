@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import TodoFilter from '../TodoFilter/TodoFilter';
+import TodoInfo from '../TodoInfo/TodoInfo';
 import style from './TodoList.module.css'
+
+
 function ToDoList({todo, setTodo}) {
 
     const [edit, setEdit] = useState(null)
     const [value, setValue] = useState('')
     const [filtered, setFiltered] = useState(todo);
 
-    useEffect( () => {
+    useEffect(() => {
         setFiltered(todo)
     }, [todo])
 
@@ -51,17 +55,7 @@ function ToDoList({todo, setTodo}) {
 
   return (
     <div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary" onClick={() => todoFilter('all')}>All</button>
-            <button type="button" class="btn btn-secondary" onClick={() => todoFilter(true)}>Unresolved</button>
-            <button type="button" class="btn btn-secondary" onClick={() => todoFilter(false)}>Resolved</button>
-        </div>
-        {/* <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1" onClick={() => todoFilter('all')}>All</option>
-            <option value="2" onClick={() => todoFilter('true')}>Two</option>
-            <option value="3" onClick={() => todoFilter('false')}>Three</option>
-        </select> */}
+        
 
         {filtered.map(item => 
             <div key= {item.id}>
@@ -86,6 +80,13 @@ function ToDoList({todo, setTodo}) {
             </div>
             
         )}
+
+        <TodoFilter 
+            todoFilter = {todoFilter}
+        />
+
+        <TodoInfo todo={todo}/>
+
     </div>
   ) 
 }
