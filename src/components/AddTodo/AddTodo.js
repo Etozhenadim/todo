@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 
 function AddTodo({todo, setTodo}) {
-
   const [value, setValue] = useState('');
 
   const saveTodo =()=> {
@@ -14,6 +13,8 @@ function AddTodo({todo, setTodo}) {
       )
       setValue('');
   }
+
+  
   return (
     <div>
       <input placeholder='What to do next?' value ={value} onChange={(e)=> setValue(e.target.value)}/>
