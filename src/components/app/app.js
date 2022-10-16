@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AddTodo from '../TodoAdd/AddTodo'
 import ToDoList from '../TodoList/TodoList'
@@ -11,13 +11,21 @@ export function App() {
     width: "fit-content",
     margin: "20px auto 0"
   }
-  
-  const [todo, setTodo] = useState([
-    {id: 1, title: 'test', status: false},
-    {id: 2, title: 'test2', status: true},
-    {id: 3, title: 'test3', status: true},
-  ]);
 
+  const [todo, setTodo] = useState(() => {
+    const savedTodo = localStorage.getItem("todo");
+    if (savedTodo) {
+      return JSON.parse(savedTodo);
+    } else {
+      return [];
+    }
+  })
+
+  useEffect(()=> {
+    localStorage.setItem("todo", JSON.stringify(todo));
+  }, [todo]);
+
+  
    return(
     <div style ={appBlock}>
         <AddTodo todo={todo} setTodo={setTodo}/>

@@ -5,7 +5,6 @@ import style from './TodoList.module.css'
 
 
 function ToDoList({todo, setTodo}) {
-
     const [edit, setEdit] = useState(null)
     const [value, setValue] = useState('')
     const [filtered, setFiltered] = useState(todo);
@@ -55,8 +54,6 @@ function ToDoList({todo, setTodo}) {
 
   return (
     <div>
-        
-
         {filtered.map(item => 
             <div key= {item.id}>
                 {
@@ -78,7 +75,6 @@ function ToDoList({todo, setTodo}) {
                 }
                
             </div>
-            
         )}
 
         <TodoFilter 
