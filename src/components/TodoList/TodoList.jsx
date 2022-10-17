@@ -99,7 +99,6 @@ function ToDoList({todo, setTodo}) {
                 : null
             
         }
-        
 
         <TodoFilter 
             todoFilter = {todoFilter}

@@ -1,6 +1,10 @@
 import React from 'react'
 
-function TodoFilter({todoFilter}) {
+type Props ={
+  todoFilter: any
+}
+
+function TodoFilter({todoFilter} : Props){
 
   const Filter = {
     marginTop: "20px",

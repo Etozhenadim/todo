@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TodoPaginator = ({postsPerPage, totalPosts, paginate}) => {
+export const TodoPaginator = ({postsPerPage, totalPosts, paginate}:any) => {
     const pageNumbers = []
 
     for(let i= 1; i<=Math.ceil(totalPosts / postsPerPage); i++){

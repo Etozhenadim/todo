@@ -1,6 +1,10 @@
 import React from 'react'
 
-function TodoInfo({todo}) {
+
+type Props = {
+  todo: []
+}
+const TodoInfo = ({todo}:Props) =>{
   const todoInfo = {
     marginTop: "20px",
     display: "flex",
@@ -16,7 +20,7 @@ function TodoInfo({todo}) {
     <div style={todoInfo}>
         <h2>Completed</h2>
         <h3>
-          {todo.filter(item=> item.status === false).length} 
+          {todo.filter((item: { status: boolean })=> item.status === false).length} 
           /{todo.length}
         </h3>
     </div>

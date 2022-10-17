@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function AddTodo({todo, setTodo}) {
+function AddTodo({todo, setTodo}:([] | any)) {
   const [value, setValue] = useState('');
 
   const saveTodo =()=> {
