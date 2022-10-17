@@ -6,15 +6,16 @@ type Props ={
 
 function TodoFilter({todoFilter} : Props){
 
-  const Filter = {
-    marginTop: "20px",
-  }
-
   return (
-      <div className="btn-group" role="group" aria-label="Basic example" style ={Filter}>
-            <button type="button" className="btn btn-secondary" onClick={() => todoFilter('all')}>All</button>
-            <button type="button" className="btn btn-secondary" onClick={() => todoFilter(true)}>Unresolved</button>
-            <button type="button" className="btn btn-secondary" onClick={() => todoFilter(false)}>Resolved</button>
+      <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+            Dropdown
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button className="dropdown-item" type="button" onClick={() => todoFilter('all')}>All</button>
+            <button className="dropdown-item" type="button" onClick={() => todoFilter(true)}>Unresolved</button>
+            <button className="dropdown-item" type="button" onClick={() => todoFilter(false)}>Resolved</button>
+          </div>
       </div>
   )
 }

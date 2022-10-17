@@ -1,0 +1,11 @@
+.todo-info{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 3px;
+    font-size: 20px;
+    width: 200px
+}

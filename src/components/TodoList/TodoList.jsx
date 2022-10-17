@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import TodoFilter from '../TodoFilter/TodoFilter';
 import TodoInfo from '../TodoInfo/TodoInfo';
 import { TodoPaginator } from '../TodoPaginator/TodoPaginator';
-import style from './TodoList.module.css'
+
+import './TodoList.css';
 
 
 function ToDoList({todo, setTodo}) {
@@ -18,6 +19,7 @@ function ToDoList({todo, setTodo}) {
 
 
     const todoFilter = (status) => {
+
         if(status === 'all'){
             setFiltered(todo)
         } else {
@@ -65,14 +67,14 @@ function ToDoList({todo, setTodo}) {
    }
 
   return (
-    <div>
+    <div className='todo-list'>
         {currentPosts.map(item => 
             <div key= {item.id}>
                 {
                     edit === item.id ? 
                         <><input onChange={(e)=> setValue(e.target.value)} value={value}/></>
                         :
-                        <div className={!item.status ? style.close : ''}>{item.title}</div>
+                        <div className={ !item.status ? 'close' : ''}>{item.title}</div>
                 }
                  
                 {

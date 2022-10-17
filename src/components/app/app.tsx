@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
-import AddTodo from '../TodoAdd/AddTodo'
+import AddTodo from '../TodoAdd/TodoAdd'
 import ToDoList from '../TodoList/TodoList'
 import './app.css'
 
 export function App() {
-  const appBlock = {
-    padding: "10px",
-    border: "1px solid black",
-    width: "fit-content",
-    margin: "20px auto 0"
-  }
-
+  
   const [todo, setTodo] = useState(() => {
     const savedTodo = localStorage.getItem("todo");
     if (savedTodo) {
@@ -27,7 +20,7 @@ export function App() {
 
   
    return(
-    <div style ={appBlock}>
+    <div className='app'>
         <AddTodo todo={todo} setTodo={setTodo}/>
         <ToDoList todo={todo} setTodo={setTodo}/>
     </div>
