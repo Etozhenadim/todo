@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import TodoFilter from '../TodoFilter/TodoFilter';
 import TodoInfo from '../TodoInfo/TodoInfo';
+import { TodoPaginator } from '../TodoPaginator/TodoPaginator';
 import style from './TodoList.module.css'
 
 
@@ -8,7 +9,9 @@ function ToDoList({todo, setTodo}) {
     const [edit, setEdit] = useState(null)
     const [value, setValue] = useState('')
     const [filtered, setFiltered] = useState(todo);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage] = useState(5);
+ 
     useEffect(() => {
         setFiltered(todo)
     }, [todo])
@@ -51,10 +54,19 @@ function ToDoList({todo, setTodo}) {
     setEdit(null);
    }
 
+   // Paginator Logic
+   const indexOfLastPost  = currentPage * postPerPage;
+   const indexOfFirstPost = indexOfLastPost - postPerPage;
+   const currentPosts = filtered.slice(indexOfFirstPost, indexOfLastPost);
+
+   //Change number in paginator
+   const paginate = (pageNumber)=> {
+    setCurrentPage(pageNumber)
+   }
 
   return (
     <div>
-        {filtered.map(item => 
+        {currentPosts.map(item => 
             <div key= {item.id}>
                 {
                     edit === item.id ? 
@@ -77,12 +89,24 @@ function ToDoList({todo, setTodo}) {
             </div>
         )}
 
+        {
+            filtered.length > 5 ? 
+                <TodoPaginator 
+                postsPerPage = {postPerPage} 
+                totalPosts = {filtered.length} 
+                paginate = {paginate}
+                />  
+                : null
+            
+        }
+        
+
         <TodoFilter 
             todoFilter = {todoFilter}
         />
 
         <TodoInfo todo={todo}/>
-
+                
     </div>
   ) 
 }
