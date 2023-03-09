@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import AddTodo from '../TodoAdd/TodoAdd'
-import ToDoList from '../TodoList/TodoList'
+import {TodoAdd} from './TodoAdd/TodoAdd'
+import ToDoList from './TodoList/TodoList'
 import './app.css'
+import {ThemeSwitcher} from "./ThemeSwitcher/ThemeSwitcher";
 
 export function App() {
   
@@ -20,9 +21,10 @@ export function App() {
 
   
    return(
-    <div className='app'>
-        <AddTodo todo={todo} setTodo={setTodo}/>
+    <div className='container'>
+        <TodoAdd todo={todo} setTodo={setTodo}/>
         <ToDoList todo={todo} setTodo={setTodo}/>
+        <ThemeSwitcher />
     </div>
    
    )
