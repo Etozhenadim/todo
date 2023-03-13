@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react'
 import TodoFilter from '../TodoFilter/TodoFilter';
 import TodoInfo from '../TodoInfo/TodoInfo';
 import { TodoPaginator } from '../TodoPaginator/TodoPaginator';
+import { RiDeleteBin6Line, RiEditLine } from 'react-icons/ri';
+import {MdOutlineFileDownloadDone} from 'react-icons/md'
 
-import './TodoList.css';
+import Button from 'react-bootstrap/Button';
+
 
 
 function ToDoList({todo, setTodo}) {
@@ -68,45 +71,50 @@ function ToDoList({todo, setTodo}) {
 
   return (
     <div className='todo-list'>
+        <div className='todo-list_header'>
+            <TodoInfo todo={todo}/>
+            <TodoFilter
+                todoFilter = {todoFilter}
+            />
+        </div>
+
         {currentPosts.map(item => 
-            <div key= {item.id}>
+            <div key= {item.id} className='todo-list_item'>
                 {
                     edit === item.id ? 
                         <><input onChange={(e)=> setValue(e.target.value)} value={value}/></>
                         :
                         <div className={ !item.status ? 'close' : ''}>{item.title}</div>
                 }
-                 
+
                 {
-                    edit === item.id ? 
-                        <button onClick={()=> saveTodo(item.id)} >Save</button>
+                    edit === item.id ?
+                        <div className='todo-list_item--buttons'>
+                        <Button variant="success" onClick={()=> saveTodo(item.id)} >Save</Button>
+                        </div>
                         : 
-                        <>
-                        <button onClick={ () => deleteTodo(item.id)}>Delete</button>
-                        <button onClick={ () => editTodo(item.id, item.title)}>Edit</button>
-                        <button onClick={ () => statusTodo(item.id)}>Resolved</button>
-                        </>
+                        <div className='todo-list_item--buttons'>
+                            <Button variant="light" onClick={ () => deleteTodo(item.id)}><RiDeleteBin6Line /></Button>
+                            <Button variant="light" onClick={ () => editTodo(item.id, item.title)}><RiEditLine /></Button>
+                            <Button variant="light" onClick={ () => statusTodo(item.id)}><MdOutlineFileDownloadDone /></Button>
+                        </div>
                 }
-               
+
             </div>
         )}
 
         {
-            filtered.length > 5 ? 
-                <TodoPaginator 
-                postsPerPage = {postPerPage} 
-                totalPosts = {filtered.length} 
+            filtered.length > 5 ?
+                <TodoPaginator
+                postsPerPage = {postPerPage}
+                totalPosts = {filtered.length}
                 paginate = {paginate}
-                />  
+                />
                 : null
-            
+
         }
 
-        <TodoFilter 
-            todoFilter = {todoFilter}
-        />
 
-        <TodoInfo todo={todo}/>
                 
     </div>
   ) 

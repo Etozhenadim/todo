@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 export const ThemeSwitcher = ()=> {
     return(
         <>
-            <Form.Label htmlFor="exampleColorInput">Theme Switcher</Form.Label>
+            <p>Theme Switcher</p>
             <Form.Control
                 type="color"
                 id="exampleColorInput"

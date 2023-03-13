@@ -7,7 +7,7 @@ type Props ={
 function TodoFilter({todoFilter} : Props){
 
   return (
-      <div className="dropdown">
+      <div className="todo_filter">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
             Dropdown
           </button>

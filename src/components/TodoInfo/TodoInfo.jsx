@@ -1,5 +1,4 @@
 import React from 'react'
-import './TodoInfo.css'
 
 type Props = {
   todo: []
@@ -8,11 +7,11 @@ const TodoInfo = ({todo}:Props) =>{
 
   return (
     <div className='todo-info'>
-        <h2>Completed</h2>
-        <h3>
+        <h4>Completed</h4>
+        <h4>
           {todo.filter((item: { status: boolean })=> item.status === false).length} 
           /{todo.length}
-        </h3>
+        </h4>
     </div>
   )
 }
