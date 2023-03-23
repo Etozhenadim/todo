@@ -2,10 +2,15 @@ import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export const TodoAdd=({todo, setTodo}) => {
+type Props = {
+    todo: any,
+    setTodo: any
+}
+export const TodoAdd=({todo, setTodo}: Props) => {
   const [value, setValue] = useState('');
 
   const saveTodo =()=> {
+      if(!value) return;
       setTodo(
         [...todo, {
           id: Math.floor(Math.random() * 10000),

@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props ={
-  todoFilter: any
+  todoFilter: (filter: boolean | string) => void
 }
 
 function TodoFilter({todoFilter} : Props){

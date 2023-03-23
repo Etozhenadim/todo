@@ -1,5 +1,5 @@
 import React  from 'react';
-import './app.css'
+import './app.scss'
 import {Todo} from "./components/Todo";
 
 

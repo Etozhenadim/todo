@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800;900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +8,6 @@
 }
 
 :root {
-
     --color-primary: #5a78ff;
     --color-secondary: #0957ff;
 }
@@ -21,8 +19,6 @@ body{
     justify-content: center;
     align-items: center;
 }
-
-
 
 #container {
     padding: 20px;
@@ -46,7 +42,7 @@ body{
 }
 .todo_wrapper{
     min-width: 550px;
-    background: rgba( 255, 255, 255, 0.15 );
+    background: rgba( 255, 255, 255);
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.3 );
     backdrop-filter: blur( 3px );
     -webkit-backdrop-filter: blur( 3px );
@@ -64,25 +60,26 @@ body{
     display: flex;
     flex-direction: column;
     padding: 10px 0;
-}
-
-.todo-list_item{
-   display: flex;
-    flex-direction: column;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba( 31, 38, 135, 0.3 );
-}
-.todo-list_item--buttons{
-    display: flex;
-    gap:5px;
-    align-self: flex-end;
-    margin-top: 5px;
-}
-
-.todo-list_header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    &_header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &_item{
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba( 31, 38, 135, 0.3 );
+        &--close {
+            text-decoration: line-through;
+        }
+        &--buttons{
+            display: flex;
+            gap:5px;
+            align-self: flex-end;
+            margin-top: 5px;
+        }
+    }
 }
 
 .todo-info{
@@ -90,11 +87,11 @@ body{
     align-items: center;
     gap: 5px;
     flex-wrap: wrap;
+    & h4{
+        margin: 0;
+    }
 }
-.todo-info h4{
-    margin: 0;
-}
-
+//Pagination
 .todo_pagination{
     margin-top: 20px;
     margin-left: auto;

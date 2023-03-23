@@ -5,69 +5,19 @@ import { TodoPaginator } from '../TodoPaginator/TodoPaginator';
 import { RiDeleteBin6Line, RiEditLine } from 'react-icons/ri';
 import {MdOutlineFileDownloadDone} from 'react-icons/md'
 
+import {useTodoList} from './useTodoList'
+
 import Button from 'react-bootstrap/Button';
 
-
-
 function ToDoList({todo, setTodo}) {
-    const [edit, setEdit] = useState(null)
-    const [value, setValue] = useState('')
-    const [filtered, setFiltered] = useState(todo);
+
+
     const [currentPage, setCurrentPage] = useState(1);
     const [postPerPage] = useState(5);
- 
-    useEffect(() => {
-        setFiltered(todo)
-    }, [todo])
 
-
-    const todoFilter = (status) => {
-
-        if(status === 'all'){
-            setFiltered(todo)
-        } else {
-            let newTodo = [...todo].filter(item => item.status === status)
-            setFiltered(newTodo)
-        }
-    }
-
-   const deleteTodo = (id)=>{
-        let newTodo = [...todo].filter(elem=> elem.id !== id);
-        setTodo(newTodo);
-   } 
-   const statusTodo = (id) =>{
-    let newTodo = [...todo].filter(item => {
-        if(item.id === id){
-            item.status = !item.status
-        }
-        return item
+    const {deleteTodo, filtered, setFiltered, todoFilter, statusTodo, editTodo, saveTodo, currentPosts, paginate, edit, value, setValue}=useTodoList({todo, setTodo
     })
-    setTodo(newTodo)
-   }
-   const editTodo = (id, title)=>{
-        setEdit(id)
-        setValue(title)
-   }
-   const saveTodo = (id) =>{
-    let newTodo = [...todo].map(item => {
-        if(item.id === id){
-            item.title = value
-        }
-        return item
-    })
-    setTodo(newTodo)
-    setEdit(null);
-   }
 
-   // Paginator Logic
-   const indexOfLastPost  = currentPage * postPerPage;
-   const indexOfFirstPost = indexOfLastPost - postPerPage;
-   const currentPosts = filtered.slice(indexOfFirstPost, indexOfLastPost);
-
-   //Change number in paginator
-   const paginate = (pageNumber)=> {
-    setCurrentPage(pageNumber)
-   }
 
   return (
     <div className='todo-list'>
@@ -84,7 +34,7 @@ function ToDoList({todo, setTodo}) {
                     edit === item.id ? 
                         <><input onChange={(e)=> setValue(e.target.value)} value={value}/></>
                         :
-                        <div className={ !item.status ? 'close' : ''}>{item.title}</div>
+                        <div className={ !item.status ? 'todo-list_item--close' : ''}>{item.title}</div>
                 }
 
                 {
@@ -113,9 +63,6 @@ function ToDoList({todo, setTodo}) {
                 : null
 
         }
-
-
-                
     </div>
   ) 
 }

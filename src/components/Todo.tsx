@@ -4,7 +4,7 @@ import {ThemeSwitcher} from "./ThemeSwitcher/ThemeSwitcher";
 import React, {useEffect, useState} from "react";
 
 export const Todo =()=>{
-
+    const [theme, setTheme] = useState('#1d5a62')
     const [todo, setTodo] = useState(() => {
         const savedTodo = localStorage.getItem("todo");
         if (savedTodo) {
@@ -17,14 +17,13 @@ export const Todo =()=>{
         localStorage.setItem("todo", JSON.stringify(todo));
     }, [todo]);
 
-
     return (
-        <div className='todo'>
+        <div className='todo' style={{backgroundColor: theme}}>
             <div className="todo_switcher">
-                <ThemeSwitcher />
+                <ThemeSwitcher theme={theme} setTheme={setTheme}/>
             </div>
 
-            <div className='todo_wrapper'>
+            <div className='todo_wrapper' >
                 <TodoAdd todo={todo} setTodo={setTodo}/>
                 <ToDoList todo={todo} setTodo={setTodo}/>
             </div>
